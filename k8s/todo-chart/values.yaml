@@ -1,0 +1,67 @@
+# Default values for todo-app
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+backend:
+  replicaCount: 1
+  image:
+    repository: todo-backend
+    tag: v1
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 8000
+  resources:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+frontend:
+  replicaCount: 1
+  image:
+    repository: todo-frontend
+    tag: v1
+    pullPolicy: IfNotPresent
+  service:
+    type: NodePort
+    port: 80
+    nodePort: null  # Set to a specific port number if needed, or leave null to auto-assign
+  resources:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+secrets:
+  create: true
+  # databaseUrl: ""  # Add your database URL here when deploying
+  # openaiApiKey: ""  # Add your OpenAI API key here when deploying
+
+database:
+  deployLocal: false  # Set to true to deploy a local Postgres instance
+
+# Application configuration
+config:
+  debug: false
+  logLevel: "info"
+
+# Resources can be limited to prevent resource exhaustion
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+# Node selectors and tolerations for scheduling
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

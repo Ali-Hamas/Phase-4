@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "todo-app.fullname" . }}-config
+  labels:
+    {{- include "todo-app.labels" . | nindent 4 }}
+data:
+  # Add any non-sensitive configuration here
+  # Example:
+  # app-config.json: |
+  #   {
+  #     "debug": {{ .Values.config.debug | default false }},
+  #     "logLevel": "{{ .Values.config.logLevel | default "info" }}"
+  #   }

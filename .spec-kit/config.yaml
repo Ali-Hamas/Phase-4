@@ -1,0 +1,29 @@
+name: hackathon-todo
+version: "1.0"
+
+# Directory structure definitions
+structure:
+  specs_dir: specs
+  features_dir: specs/features
+  api_dir: specs/api
+  database_dir: specs/database
+  ui_dir: specs/ui
+  # Critical for Phase 4: Folder for Docker & K8s specs
+  [cite_start]infra_dir: specs/infrastructure  [cite: 532]
+
+# Project Phases
+phases:
+  - name: phase1-console
+    features: [task-crud]
+    
+  - name: phase2-web
+    features: [task-crud, authentication]
+    
+  - name: phase3-chatbot
+    features: [task-crud, authentication, chatbot]
+    
+  # Phase 4 Configuration
+  - name: phase4-k8s
+    features: 
+      - [cite_start]containerization         # For Dockerfile specs [cite: 504]
+      - [cite_start]kubernetes-deployment    # For Helm Chart & Minikube specs [cite: 506]
