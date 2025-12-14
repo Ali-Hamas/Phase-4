@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la */)",
+      "Bash(mkdir -p backend frontend)",
+      "Bash(mkdir -p backend/app frontend/src)",
+      "Bash(minikube status)",
+      "Bash(docker --version)",
+      "Bash(docker build -t todo-backend:v1 ./backend)",
+      "Bash(wsl --status)",
+      "Bash(mkdir -p k8s/todo-chart/templates)",
+      "Bash(minikube start)",
+      "Bash(kubectl version --client)",
+      "Bash(echo \"apiVersion: v2\nname: todo-app\ndescription: A Helm chart for deploying the Todo Chatbot application\ntype: application\nversion: 0.1.0\nappVersion: \"\"1.0.0\"\"\")",
+      "Bash(echo \"# Default values for todo-app\n# This is a YAML-formatted file.\n# Declare variables to be passed into your templates.\n\nbackend:\n  replicaCount: 1\n  image:\n    repository: todo-backend\n    tag: v1\n    pullPolicy: IfNotPresent\n  service:\n    type: ClusterIP\n    port: 8000\n\nfrontend:\n  replicaCount: 1\n  image:\n    repository: todo-frontend\n    tag: v1\n    pullPolicy: IfNotPresent\n  service:\n    type: NodePort\n    port: 80\n    nodePort: null  # Set to a specific port number if needed, or leave null to auto-assign\n\n# Resources can be limited to prevent resource exhaustion\nresources:\n  limits:\n    cpu: 500m\n    memory: 512Mi\n  requests:\n    cpu: 100m\n    memory: 128Mi\n\n# Node selectors and tolerations for scheduling\nnodeSelector: {}\n\ntolerations: []\n\naffinity: {}\")",
+      "Bash(echo \"{{- if .Values.secrets.create }}\napiVersion: v1\nkind: Secret\nmetadata:\n  name: {{ include \"\"todo-app.fullname\"\" . }}-secrets\n  labels:\n    {{- include \"\"todo-app.labels\"\" . | nindent 4 }}\ntype: Opaque\ndata:\n  {{- if .Values.secrets.databaseUrl }}\n  database-url: {{ .Values.secrets.databaseUrl | b64enc | quote }}\n  {{- end }}\n  {{- if .Values.secrets.openaiApiKey }}\n  openai-api-key: {{ .Values.secrets.openaiApiKey | b64enc | quote }}\n  {{- end }}\n{{- end }}\")",
+      "Bash(echo \"apiVersion: v1\nkind: ConfigMap\nmetadata:\n  name: {{ include \"\"todo-app.fullname\"\" . }}-config\n  labels:\n    {{- include \"\"todo-app.labels\"\" . | nindent 4 }}\ndata:\n  # Add any non-sensitive configuration here\n  # Example:\n  # app-config.json: |\n  #   {\n  #     \"\"debug\"\": {{ .Values.config.debug | default false }},\n  #     \"\"logLevel\"\": \"\"{{ .Values.config.logLevel | default \"\"info\"\" }}\"\"\n  #   }\")",
+      "Bash(echo \"# Default values for todo-app\n# This is a YAML-formatted file.\n# Declare variables to be passed into your templates.\n\nbackend:\n  replicaCount: 1\n  image:\n    repository: todo-backend\n    tag: v1\n    pullPolicy: IfNotPresent\n  service:\n    type: ClusterIP\n    port: 8000\n\nfrontend:\n  replicaCount: 1\n  image:\n    repository: todo-frontend\n    tag: v1\n    pullPolicy: IfNotPresent\n  service:\n    type: NodePort\n    port: 80\n    nodePort: null  # Set to a specific port number if needed, or leave null to auto-assign\n\nsecrets:\n  create: true\n  # databaseUrl: \"\"\"\"  # Add your database URL here when deploying\n  # openaiApiKey: \"\"\"\"  # Add your OpenAI API key here when deploying\n\n# Resources can be limited to prevent resource exhaustion\nresources:\n  limits:\n    cpu: 500m\n    memory: 512Mi\n  requests:\n    cpu: 100m\n    memory: 128Mi\n\n# Node selectors and tolerations for scheduling\nnodeSelector: {}\n\ntolerations: []\n\naffinity: {}\")",
+      "Bash(dir k8stodo-chart /s)",
+      "Bash(dir \"k8s\\todo-chart\" /s)",
+      "Bash(dir \"k8s\\todo-chart\\templates\")",
+      "Bash(del \"k8s\\todo-chart\\templates\\backend-deployment.yaml\" \"k8s\\todo-chart\\templates\\backend-service.yaml\" \"k8s\\todo-chart\\templates\\frontend-deployment.yaml\" \"k8s\\todo-chart\\templates\\frontend-service.yaml\")",
+      "Bash(echo \"# Default values for todo-app\n# This is a YAML-formatted file.\n# Declare variables to be passed into your templates.\n\nbackend:\n  replicaCount: 1\n  image:\n    repository: todo-backend\n    tag: v1\n    pullPolicy: IfNotPresent\n  service:\n    type: ClusterIP\n    port: 8000\n  resources:\n    limits:\n      cpu: 500m\n      memory: 512Mi\n    requests:\n      cpu: 100m\n      memory: 128Mi\n\nfrontend:\n  replicaCount: 1\n  image:\n    repository: todo-frontend\n    tag: v1\n    pullPolicy: IfNotPresent\n  service:\n    type: NodePort\n    port: 80\n    nodePort: null  # Set to a specific port number if needed, or leave null to auto-assign\n  resources:\n    limits:\n      cpu: 500m\n      memory: 512Mi\n    requests:\n      cpu: 100m\n      memory: 128Mi\n\nsecrets:\n  create: true\n  # databaseUrl: \"\"\"\"  # Add your database URL here when deploying\n  # openaiApiKey: \"\"\"\"  # Add your OpenAI API key here when deploying\n\ndatabase:\n  deployLocal: false  # Set to true to deploy a local Postgres instance\n\n# Resources can be limited to prevent resource exhaustion\nresources:\n  limits:\n    cpu: 500m\n    memory: 512Mi\n  requests:\n    cpu: 100m\n    memory: 128Mi\n\n# Node selectors and tolerations for scheduling\nnodeSelector: {}\n\ntolerations: []\n\naffinity: {}\")",
+      "SlashCommand(/sp.phr \"Create Helm Chart for Todo Chatbot\")",
+      "Bash(dir /s)",
+      "Bash(dir)",
+      "Bash(tree /f)",
+      "Bash(powershell \"Get-ChildItem -Recurse | Where-Object {$_PSIsContainer} | ForEach-Object {Write-Host $_FullName; Get-ChildItem -Path $_FullName -Name}\")"
+    ]
+  }
+}
